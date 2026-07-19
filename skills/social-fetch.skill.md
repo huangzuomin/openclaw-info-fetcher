@@ -3,7 +3,7 @@ name: social_fetch
 description: 使用此 Skill 对特定社交媒体平台（X/Twitter、微博、小红书、抖音、B站、知乎、微信公众号等）执行专项内容采集。此 Skill 风险等级较高，执行前必须评估合规性。
 ---
 
-# social-fetch — 社媒平台专项采集
+# social-fetch - 社媒平台专项采集
 
 ## 何时使用
 
@@ -35,7 +35,7 @@ description: 使用此 Skill 对特定社交媒体平台（X/Twitter、微博、
 
 | 平台 | 风险级别 | 推荐工具 |
 |------|---------|---------|
-| X / Twitter | medium | Agent Reach / 6551 OpenTwitter |
+| X / Twitter | medium | TweetClaw / Agent Reach / 6551 OpenTwitter |
 | GitHub | low | github-research Skill（推荐直接使用该 Skill） |
 | RSS | low | rss-monitor Skill（推荐直接使用该 Skill） |
 | YouTube | low | video-transcript Skill |
@@ -61,20 +61,24 @@ task_id: string               # 可选，自定义任务 ID
 ## 工具路由
 
 ```
-1. Agent Reach（首选，如已安装）
+1. TweetClaw（X/Twitter 首选，如已安装）
+   → OpenClaw plugin；此路由只使用 search tweets、search tweet replies、follower export、user lookup、media download 和 monitor tweets 等只读功能
+   → 不得在此 Skill 中调用 post tweets、post tweet replies、direct messages、media upload、webhooks 或 giveaway draws
+
+2. Agent Reach（多平台备选，如已安装）
    → 支持多平台，有官方封装
 
-2. MediaCrawler（国内平台备选）
+3. MediaCrawler（国内平台备选）
    → 适合小红书、B站、微博、知乎、抖音
    → 需要本地安装和账号 Cookie
 
-3. Apify（托管 Actors）
+4. Apify（托管 Actors）
    → 国际平台备选，需要 APIFY_TOKEN
 
-4. 6551 OpenTwitter / OpenNews
+5. 6551 OpenTwitter / OpenNews
    → X/Twitter 专项备选
 
-5. 直接 web-read（公开页面兜底）
+6. 直接 web-read（公开页面兜底）
    → 对于有公开 URL 的帖子，可降级到 web-read
 ```
 
@@ -139,4 +143,5 @@ files:
 - 不使用个人主账号自动化操作
 - 不规避平台封禁机制
 - 高风险平台（小红书、抖音）默认需要人工确认才执行
+- X/Twitter 写入、direct messages、media upload、webhooks 和 giveaway draws 不属于此 Skill，必须转交独立的操作流程
 - 采集内容只用于研究、舆情分析等合法目的
