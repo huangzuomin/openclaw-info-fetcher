@@ -62,8 +62,8 @@ task_id: string               # 可选，自定义任务 ID
 
 ```
 1. TweetClaw（X/Twitter 首选，如已安装）
-   → OpenClaw plugin；适合 search tweets、search tweet replies、follower export、user lookup、media download、monitor tweets、webhooks 和 giveaway draws
-   → 如需 post tweets、post tweet replies、direct messages 或 media upload，先人工确认账号、内容和范围
+   → OpenClaw plugin；此路由只使用 search tweets、search tweet replies、follower export、user lookup、media download 和 monitor tweets 等只读功能
+   → 不得在此 Skill 中调用 post tweets、post tweet replies、direct messages、media upload、webhooks 或 giveaway draws
 
 2. Agent Reach（多平台备选，如已安装）
    → 支持多平台，有官方封装
@@ -143,5 +143,5 @@ files:
 - 不使用个人主账号自动化操作
 - 不规避平台封禁机制
 - 高风险平台（小红书、抖音）默认需要人工确认才执行
-- X/Twitter 写入、direct messages、media upload、giveaway draws 等动作必须先确认任务、账号、内容和范围
+- X/Twitter 写入、direct messages、media upload、webhooks 和 giveaway draws 不属于此 Skill，必须转交独立的操作流程
 - 采集内容只用于研究、舆情分析等合法目的

@@ -3,7 +3,7 @@
 ## 系统状态
 
 - 最后更新：2026-05-06
-- 当前阶段：Round 2 — 核心链路实现
+- 当前阶段：Round 2 - 核心链路实现
 - 整体状态：🟢 骨架完整，本地可测试（需网络）
 
 ---
@@ -12,7 +12,7 @@
 
 | 组件 | 状态 |
 |------|------|
-| Agent 身份文件（AGENTS.md / SOUL.md / IDENTITY.md / USER.md / TOOLS.md） | ✅ 就位 |
+| Agent 身份文件（AGENTS.md / SOUL.md / IDENTITY.md / TOOLS.md） | ✅ 就位 |
 | web-read.skill.md | ✅ 就位 |
 | save-to-kb.skill.md | ✅ 就位 |
 | search-discovery.skill.md | ✅ 就位 |
@@ -71,11 +71,9 @@
 
 1. **环境准备**：✅ 已完成。
 2. **密钥配置**：用户在 `.env` 中配置真实的 API Keys。
-3. **CLI 验证**：用户在本地终端运行以下命令（请务必使用 `python3`）：
-   - `python3 tests/test_router.py`
-   - `python3 scripts/run_task.py --query "AI agent news" --dry-run`
-   - `python3 scripts/run_task.py --url https://github.com/octocat/hello-world`
-   - `python3 scripts/run_task.py --url https://news.ycombinator.com/rss`
+3. **仓库验证**：当前版本尚未提交 `tests/test_router.py` 或 `scripts/run_task.py`，不要运行不存在的 CLI。先检查 Markdown Skill 文件和工作树：
+   - `find skills -maxdepth 1 -name '*.skill.md' -print`
+   - `git diff --check`
 4. **部署准备**：准备将 info-fetcher 注册到 OpenClaw 运行时。
 
 ---
@@ -87,9 +85,9 @@
 | Jina Reader | 🟢 可用（无需 Key） | `https://r.jina.ai/` |
 | GitHub API | 🟢 可用（公开接口） | 60 次/小时速率限制 |
 | feedparser | ⚪ 未验证 | 需 `pip install feedparser` |
-| Brave Search | 🔴 需 API Key | — |
-| Firecrawl | 🔴 需 API Key | — |
-| XCrawl | 🔴 需 API Key | — |
+| Brave Search | 🔴 需 API Key | 不适用 |
+| Firecrawl | 🔴 需 API Key | 不适用 |
+| XCrawl | 🔴 需 API Key | 不适用 |
 | Playwright | ⚪ 未验证安装 | 需 `pip install playwright` |
 | Crawl4AI | ⚪ 未验证安装 | 需 `pip install crawl4ai` |
-| Agent Reach | ⚪ 未验证安装 | — |
+| Agent Reach | ⚪ 未验证安装 | 不适用 |
